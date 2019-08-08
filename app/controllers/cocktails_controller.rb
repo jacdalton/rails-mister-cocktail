@@ -20,9 +20,6 @@ class CocktailsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   private
 
   def cocktail_params
