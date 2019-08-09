@@ -13,7 +13,11 @@
     <% @cocktails.each do |c| %>
       <div class="col p-3">
         <div class="card" style="width: 18rem;">
-        <%= image_tag "Old-Fashioned.jpeg", alt: "old fashioned cocktail", class: "card-img-top" %>
+        <% if c.photo.present? %>
+        <%= cl_image_tag c.photo, class: "card-img-top" %>
+        <% else %>
+        <%= image_tag "Old-Fashioned.jpg", class: "card-img-top" %>
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= link_to c.name, cocktail_path(c) %></h5>
         </div>
