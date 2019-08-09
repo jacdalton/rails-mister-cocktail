@@ -1,15 +1,27 @@
-<h1><%= @cocktail.name %></h1>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li>
-      <%= dose.description %> <%= dose.ingredient.name %>
-      <%= link_to cocktail_dose_path(@cocktail, dose), 
-          method: :delete, 
-          data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt"></i>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="card m-3" style="width: 50%;">
+      <% if @cocktail.photo.present? %>
+      <%= cl_image_tag @cocktail.photo, class: "card-img-top" %>
+      <% else %>
+      <%= image_tag "Old-Fashioned.jpg", class: "card-img-top" %>
       <% end %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %>
-<%= link_to "Home", root_path %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @cocktail.name %></h5>
+        <ul class="list-group">
+          <% @cocktail.doses.each do |dose| %>
+            <li class="list-group-item p-3 my-2">
+              <%= dose.description %> <%= dose.ingredient.name %>
+              <%= link_to cocktail_dose_path(@cocktail, dose), 
+                  method: :delete, 
+                  data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-warning btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>
