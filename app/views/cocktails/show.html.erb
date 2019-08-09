@@ -1,8 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-image: linear-gradient(rgba(230, 100, 101,0.5), rgba(145, 152, 229,0.5)),
+         url('<%= image_path "heh.jpeg" %>')">
   <div class="row justify-content-center">
-    <div class="card m-3" style="width: 50%;">
+    <div class="card m-3 border-warning shadow" style="width: 50%;">
       <% if @cocktail.photo.present? %>
-      <%= cl_image_tag @cocktail.photo, class: "card-img-top" %>
+      <%= cl_image_tag @cocktail.photo, class: "card-img-top width" %>
       <% else %>
       <%= image_tag "Old-Fashioned.jpg", class: "card-img-top" %>
       <% end %>
@@ -10,8 +11,11 @@
         <h5 class="card-title"><%= @cocktail.name %></h5>
         <ul class="list-group">
           <% @cocktail.doses.each do |dose| %>
-            <li class="list-group-item p-3 my-2">
-              <%= dose.description %> <%= dose.ingredient.name %>
+            <li class="list-group-item p-3 my-2 d-flex justify-content-between">
+              <div class="dose-info">
+                <%= dose.description %> 
+                <%= dose.ingredient.name %>
+              </div>
               <%= link_to cocktail_dose_path(@cocktail, dose), 
                   method: :delete, 
                   data: { confirm: "Are you sure?" } do %>

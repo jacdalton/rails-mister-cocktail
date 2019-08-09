@@ -1,10 +1,15 @@
-<div class="navbar-lewagon">
+<div class="navbar-lewagon" style="background-image: linear-gradient(rgba(230, 100, 101,0.5), rgba(145, 152, 229,0.5)),
+         url('<%= image_path "pray-for-the-wicked.jpeg" %>')">
   <div class="navbar-content">
     <h1>Get Boozy</h1>
     <p>Pour out some liquor, make it an old fashioned</p>
   </div>
-  <%= link_to "Get Boozy!", root_path %>
-  <%= link_to new_cocktail_path do %>
-    <button class="btn btn-outline-primary">Add Cocktail</button>
-  <% end %>
+  <div class="navbar-links">
+    <%= link_to root_path do %>
+      <button class="btn btn-secondary shadow">Get Boozy!</button>
+    <% end %>
+    <%= link_to new_cocktail_path do %>
+      <button class="btn btn-warning shadow">Add Cocktail</button>
+    <% end %>
+  </div>
 </div>

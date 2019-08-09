@@ -1,16 +1,17 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-image: linear-gradient(rgba(230, 100, 101,0.5), rgba(145, 152, 229,0.5)),
+         url('<%= image_path "panic-at-the-disco.jpeg" %>')">
   <div class="row justify-content-center">
     <% @cocktails.each do |c| %>
       <div class="col p-3">
-        <div class="card" style="width: 18rem;">
-        <% if c.photo.present? %>
-        <%= cl_image_tag c.photo, class: "card-img-top" %>
-        <% else %>
-        <%= image_tag "Old-Fashioned.jpg", class: "card-img-top" %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to c.name, cocktail_path(c) %></h5>
-        </div>
+        <div class="card h-100 shadow border-warning" style="width: 18rem;">
+          <% if c.photo.present? %>
+          <%= cl_image_tag c.photo, class: "card-img-top" %>
+          <% else %>
+          <%= image_tag "Old-Fashioned.jpg", class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to c.name, cocktail_path(c) %></h5>
+          </div>
         </div>
       </div>
     <% end %>
